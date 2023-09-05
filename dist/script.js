@@ -70,7 +70,7 @@ const changeModalState = state => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-const forms = () => {
+const forms = state => {
   const form = document.querySelectorAll('form'),
     inputs = document.querySelectorAll('input'),
     phoneInputs = document.querySelectorAll('input[name="user_phone"]');
@@ -107,6 +107,11 @@ const forms = () => {
       statusMessage.classList.add('status');
       item.appendChild(statusMessage);
       const formData = new FormData(item);
+      if (item.getAttribute('data-calc') === 'end') {
+        for (let key in state) {
+          formData.append(key, state[key]);
+        }
+      }
       const json = JSON.stringify(Object.fromEntries(formData.entries()));
       postData('https://jsonplaceholder.typicode.com/posts', json).then(res => {
         console.log(res);
@@ -14160,7 +14165,7 @@ window.addEventListener('DOMContentLoaded', () => {
   (0,_modules_tabs__WEBPACK_IMPORTED_MODULE_2__["default"])('.glazing_slider', '.glazing_block', '.glazing_content', 'active');
   (0,_modules_tabs__WEBPACK_IMPORTED_MODULE_2__["default"])('.decoration_slider', '.no_click', '.decoration_content > div > div', 'after_click');
   (0,_modules_tabs__WEBPACK_IMPORTED_MODULE_2__["default"])('.balcon_icons', '.balcon_icons_img', '.big_img > img', 'do_image_more', 'inline-block');
-  (0,_modules_forms__WEBPACK_IMPORTED_MODULE_3__["default"])();
+  (0,_modules_forms__WEBPACK_IMPORTED_MODULE_3__["default"])(modalState);
 });
 }();
 /******/ })()

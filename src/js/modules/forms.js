@@ -1,4 +1,4 @@
-const forms = () => {
+const forms = (state) => {
   const form = document.querySelectorAll('form'),
         inputs = document.querySelectorAll('input'),
         phoneInputs = document.querySelectorAll('input[name="user_phone"]');
@@ -43,6 +43,11 @@ const forms = () => {
       item.appendChild(statusMessage);
 
       const formData = new FormData(item);
+      if (item.getAttribute('data-calc') === 'end') {
+        for (let key in state) {
+          formData.append(key, state[key]);
+        }
+      }
       
       const json = JSON.stringify(Object.fromEntries(formData.entries()));
 
