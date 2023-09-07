@@ -156,6 +156,7 @@ const images = () => {
       const path = target.parentNode.getAttribute('href');
       bigImg.setAttribute('src', path);
       bigImg.style.width = '80%';
+      bigImg.classList.add('zoom_in');
     }
     if (target && target.matches('div.popupimg')) {
       imgPopup.style.display = 'none';
