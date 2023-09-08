@@ -723,6 +723,12 @@ textarea:focus {
   height: 150px;
 }
 
+@media (max-width: 991px) {
+  .timer1 {
+    margin: 0 auto;
+  }
+}
+
 .container1 {
   display: inline-block;
 
@@ -868,7 +874,7 @@ textarea:focus {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.popupimg {
+.popup_img {
   display: none;
   position: fixed;
   top: 0;
